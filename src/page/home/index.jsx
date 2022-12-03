@@ -1,23 +1,33 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import Items from "../../components/items"
 import {useDispatch, useSelector} from "react-redux";
 
 export default function Home(){
+    const [products,setproducts]=useState([])
     const items = useSelector(state=>state.items.items)
-    const cart = useSelector(state=>state.itemsCart.items)
     const dispatch = useDispatch()
+
+    useEffect(()=>{
+        fetch("https://fakestoreapi.com/products")
+            .then((res) => res.json())
+            .then((json) => {
+                setproducts(json)
+                console.log(products)
+            })
+    },[])
 
     const getIndex=(index)=>{
         dispatch({
             type:'ADD-item',
-            payload : items[index]
+            payload : products[index]
         })
-        console.log(index,items[index])
     }
+
+
 
     return <section className='G-container'>
         <div className='G-flex-wrap item-list'>
-            {items.map((item,index)=>(
+            {products.map((item,index)=>(
                 <Items
                     item={item}
                     key={index}

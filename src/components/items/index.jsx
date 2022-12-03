@@ -4,7 +4,7 @@ import './index.scss'
 export default function Items({item,deleteitem,nums,addtocart}){
     return <div className='items'>
         <h1>{item.name}</h1>
-        {item.img ? <img src={item.img} alt=""/> : null}
+        {item.image ? <img src={item.image} alt=""/> : null}
         <p>{item.description}</p>
         <p>price {item.price}$</p>
         {deleteitem ?
