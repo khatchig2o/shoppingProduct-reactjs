@@ -1,0 +1,19 @@
+header{
+  height: 100px;
+  width: 100%;
+  max-width: 2950px;
+  background-color: #2D2F33;
+  color: white;
+  display: flex;
+  align-items: center;
+  ul{
+    gap: 40px;
+    a{
+      color:white ;
+    }
+    img{
+      height: 30px;
+      width: 30px;
+    }
+  }
+}
