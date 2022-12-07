@@ -1,14 +1,44 @@
-.items{
-  width: 400px;
-  height: fit-content;
-  padding: 20px;
-  border: 3px solid black;
-  h1{
-    text-align: center;
+.items {
+  width: 300px;
+  height: 600px;
+  .p-flex {
+    display: flex;
+    margin-top: 20px;
+
+    .price {
+      width: 150px;
+    }
   }
-  img{
-    width: 300px;
-    height: 300px;
-    border: 1px solid#1A1A1D;
+
+  .title{
+    height: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .description{
+    height: 150px;
+    overflow:hidden;
+    text-overflow: ellipsis;
+  }
+
+  .P-item-img {
+    margin: 20px auto ;
+    width: 200px;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
   }
 }
+.rating{
+  align-items: center;
+  row-gap: 5px;
+  p{
+    margin: 0 5px;
+  }
+}
+.star{
+  color: yellow;
+  font-size: 25px;
+}
+

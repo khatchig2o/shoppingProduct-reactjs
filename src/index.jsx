@@ -1,146 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import "./style/index.scss"
+import "./assets/style/index.scss"
 import App from './App';
 import {BrowserRouter as Router} from "react-router-dom";
 import {combineReducers,createStore} from 'redux'
 import {Provider } from "react-redux"
 
-import tabs from './assets/images/tab.jpg'
-import phone from './assets/images/phone.jpg'
-import pc from './assets/images/pc.jpg'
-import laptop from './assets/images/laptop.jpg'
-import earbuds from './assets/images/earbuds.jpg'
 
 const items=(state={
-    items : [
-        {
-            name:'tab',
-            price:'100',
-            img : tabs,
-            description : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, maxime.',
-        },
-        {
-            name:'phone',
-            price:'100',
-            img : phone,
-            description : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, maxime.',
-        },
-        {
-            name:'pc',
-            price:'100',
-            img : pc,
-            description : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, maxime.',
-        },
-        {
-            name:'laptop',
-            price:'100',
-            img : laptop,
-            description : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, maxime.',
-        },
-        {
-            name:'ear buds',
-            price:'100',
-            img : earbuds,
-            description : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, maxime.',
-        },
-        {
-            name:'tab',
-            price:'100',
-            img : tabs,
-            description : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, maxime.',
-        },
-        {
-            name:'phone',
-            price:'100',
-            img : phone,
-            description : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, maxime.',
-        },
-        {
-            name:'pc',
-            price:'100',
-            img : pc,
-            description : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, maxime.',
-        },
-        {
-            name:'laptop',
-            price:'100',
-            img : laptop,
-            description : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, maxime.',
-        },
-        {
-            name:'ear buds',
-            price:'100',
-            img : earbuds,
-            description : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, maxime.',
-        },
-        {
-            name:'tab',
-            price:'100',
-            img : tabs,
-            description : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, maxime.',
-        },
-        {
-            name:'phone',
-            price:'100',
-            img : phone,
-            description : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, maxime.',
-        },
-        {
-            name:'pc',
-            price:'100',
-            img : pc,
-            description : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, maxime.',
-        },
-        {
-            name:'laptop',
-            price:'100',
-            img : laptop,
-            description : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, maxime.',
-        },
-        {
-            name:'ear buds',
-            price:'100',
-            img : earbuds,
-            description : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, maxime.',
-        },
-        {
-            name:'tab',
-            price:'100',
-            img : tabs,
-            description : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, maxime.',
-        },
-        {
-            name:'phone',
-            price:'100',
-            img : phone,
-            description : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, maxime.',
-        },
-        {
-            name:'pc',
-            price:'100',
-            img : pc,
-            description : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, maxime.',
-        },
-        {
-            name:'laptop',
-            price:'100',
-            img : laptop,
-            description : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, maxime.',
-        },
-        {
-            name:'ear buds',
-            price:'100',
-            img : earbuds,
-            description : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, maxime.',
-        },
-        {
-            name: 'tab',
-            price: '100',
-            img: tabs,
-            description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, maxime.',
-        },
-        ]
+    items : []
     },action)=>{
     switch (action.type){
         case  'ADDITEM':
@@ -151,6 +19,12 @@ const items=(state={
         case 'REMOVEITEM':
             state = {
                 items: state.items.splice(action.payload,1)
+            }
+            break;
+
+        case 'fetch':
+            state = {
+                items : action.payload
             }
             break;
         default:
@@ -185,14 +59,22 @@ const itemsCart=(state={items : [
 }
 
 const store = createStore(combineReducers({items,itemsCart}))
+fetch("https://fakestoreapi.com/products")
+    .then((res) => res.json())
+    .then((json) => {
+        store.dispatch({
+            type :'fetch',
+            payload : json
+        })
+    })
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <React.StrictMode>
+    // <React.StrictMode>
         <Router>
             <Provider store={store}>
                 <App/>
             </Provider>
         </Router>
-    </React.StrictMode>
+    // </React.StrictMode>
 );
