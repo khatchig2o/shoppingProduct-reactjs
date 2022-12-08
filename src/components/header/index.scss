@@ -7,11 +7,12 @@ header{
   color: white;
   display: flex;
   align-items: center;
-  ul{
-    gap: 40px;
-    a{
+  h1,a{
       color:white ;
     }
+  ul{
+    gap: 40px;
+    
     img{
       height: 30px;
       width: 30px;

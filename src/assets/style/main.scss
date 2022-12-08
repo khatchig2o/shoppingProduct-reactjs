@@ -1,28 +1,31 @@
-.item-list{
+.item-list {
   margin-top: 40px;
   gap: 50px;
 }
-.dleting-div{
+
+.dleting-div {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   width: 400px;
   background-color: #1A1A1D;
   color: white;
   font-size: 25px;
-  button{
+
+  button {
     margin: 20px;
-    padding:5px 10px;
+    padding: 5px 10px;
   }
 }
-.div-exit{
+
+.div-exit {
   background-color: transparent;
   width: 100%;
   text-align: end;
 }
 
-.p-filter{;
+.p-filter {
   ul {
     margin: 40px;
     gap: 40px;
@@ -34,10 +37,8 @@
     }
 
     li:hover,
-    li.active{
+    li.active {
       border-bottom: 2px solid #1A1A1D;
     }
   }
 }
-
-
